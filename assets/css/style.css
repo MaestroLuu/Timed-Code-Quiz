@@ -30,12 +30,22 @@ button {
     box-shadow: 4px 4px 10px navy;  
 }
 
+li {
+    font-size: 2em;
+}
+
 main {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
-  
+
+.answers {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .card {
     background-color: white;
     border: 1px solid black;
@@ -50,7 +60,9 @@ main {
 
 .question-box {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     width: 60vw;
     height: 100%;
 }
@@ -63,12 +75,13 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     width: 35vw;
     height: 70vh;
 }
 .questions {
     padding: 1%;
-    margin: auto;
+    margin: 5%;
     font-size: 3em;
 }
 
