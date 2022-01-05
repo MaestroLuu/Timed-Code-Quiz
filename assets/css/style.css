@@ -9,7 +9,10 @@ body {
 }
 
 header {
-    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
     text-align: center;
     color: navy;
     border-bottom:30px #879274;
@@ -23,21 +26,20 @@ button {
     padding: 1% 5%;
     text-align: center;
     margin-top: 0.6em;
+    width: 30%;
     box-shadow: 4px 4px 10px navy;  
 }
 
 main {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
   
 .card {
     background-color: white;
     border: 1px solid black;
     border-radius: 8px;
-    box-shadow: 4px 4px 10px navy ;
-    margin: auto;
     padding: 20px;
 }
 
@@ -48,11 +50,30 @@ main {
 
 .question-box {
     display: flex;
-    justify-content: space-between;
-    margin-top: 16px;  
+    justify-content: center;
+    width: 60vw;
+    height: 100%;
 }
 
-.questions {
+.reset-button {
+    margin-bottom: 2%;
+}
 
+.results {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 35vw;
+    height: 70vh;
+}
+.questions {
+    padding: 1%;
+    margin: auto;
+    font-size: 3em;
+}
+
+.timer {
+    display: flex;
+    justify-content: center;
 }
 
