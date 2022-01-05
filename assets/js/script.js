@@ -7,6 +7,7 @@ var timerEl = $(".timer-count");
 var isWin = false;
 var timerCount;
 var answerList = $(".answerList");
+var answerBtn = $(".answer-button");
 
 var questionList = [
     {
@@ -34,25 +35,28 @@ function startGame() {
 }
   
 function displayAnswer () {
-    for (var i = 0; i < questionList.length; i++) {
-    
+    for (var i = 0; i < 1; i++) {
+        
+        
+        // if user has not made any iput, display [0]
+        // else, i++ and move to next question on array
         questions.text(questionList[i].question);
+        
         var answerChoice1 = $("<li>");
-
         answerChoice1.text(questionList[i].answer1);
         answerChoice1.append("<button class='answer-button correct-answer'>1</button>");
         answerList.append(answerChoice1);
     
         var answerChoice2 = $("<li>");
         answerChoice2.text(questionList[i].answer2);
-        answerChoice2.append("<button class='answer-button incorrect-answer'>2</button>");
+        answerChoice2.append("<button class='answer-button'>2</button>");
         answerList.append(answerChoice2);
     
         var answerChoice3 = $("<li>");
         answerChoice3.text(questionList[i].answer3);
-        answerChoice3.append("<button class='answer-button incorrect-answer'>3</button>");
+        answerChoice3.append("<button class='answer-button'>3</button>");
         answerList.append(answerChoice3);    
-      } 
+    } 
     
     // When the user clicks on the button that correlates with their selected answer
     // if the class = correct-answer, the display function will move to the next
@@ -84,6 +88,11 @@ function endGame() {
 }
 
 startBtn.on("click", startGame);
+answerList.on("click", function(event) {
+    console.log(event.target);
+    // if (click === (!$('answerBtn').hasClass('correct-answer')
+});
+
 
 // localStorage.setItem("initials", scores);
 
