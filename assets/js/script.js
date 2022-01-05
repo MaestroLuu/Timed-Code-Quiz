@@ -1,4 +1,4 @@
-// var scores = localStorage.setItem("");
+
 var secondsLeft = 60;
 var startBtn = $(".start-button");
 var questions = $(".questions");
@@ -29,28 +29,36 @@ function startGame() {
     // isWin = false;
     timerCount = 60;
     startBtn.disabled = true;
-    questions.text(JSON.stringify(questionList[1].question));
     startTimer();
     displayAnswer();
 }
   
 function displayAnswer () {
-    var answerChoice1 = $("<li>");
-    answerChoice1.text(questionList[1].answer1);
-    answerChoice1.append("<button class='answer-button'>1</button>");
-    answerList.append(answerChoice1);
-
-    var answerChoice2 = $("<li>");
-    answerChoice2.text(questionList[1].answer2);
-    answerChoice2.append("<button class='answer-button'>2</button>");
-    answerList.append(answerChoice2);
-
-    var answerChoice3 = $("<li>");
-    answerChoice3.text(questionList[1].answer3);
-    answerChoice3.append("<button class='answer-button'>3</button>");
-    answerList.append(answerChoice3);
-
+    for (var i = 0; i < questionList.length; i++) {
     
+        questions.text(questionList[i].question);
+        var answerChoice1 = $("<li>");
+
+        answerChoice1.text(questionList[i].answer1);
+        answerChoice1.append("<button class='answer-button correct-answer'>1</button>");
+        answerList.append(answerChoice1);
+    
+        var answerChoice2 = $("<li>");
+        answerChoice2.text(questionList[i].answer2);
+        answerChoice2.append("<button class='answer-button incorrect-answer'>2</button>");
+        answerList.append(answerChoice2);
+    
+        var answerChoice3 = $("<li>");
+        answerChoice3.text(questionList[i].answer3);
+        answerChoice3.append("<button class='answer-button incorrect-answer'>3</button>");
+        answerList.append(answerChoice3);    
+      } 
+    
+    // When the user clicks on the button that correlates with their selected answer
+    // if the class = correct-answer, the display function will move to the next
+    // question in the array w/o penalty. If it is an incorrect-answer, the timer
+    // will lose 10s and the display function will still move to the next question 
+
 }
 
 function startTimer() {
@@ -71,8 +79,13 @@ function startTimer() {
     }, 1000);
 } 
 
+function endGame() {
+    prompt("What are your first and last initials?");
+}
+
 startBtn.on("click", startGame);
 
+// localStorage.setItem("initials", scores);
 
 // check answer function
 // input function for local storage
