@@ -18,7 +18,7 @@ header {
     border-bottom:30px #879274;
 }
 
-button {
+.start-button {
     border-radius: 8px;
     color: black;
     cursor: pointer;
@@ -27,6 +27,15 @@ button {
     text-align: center;
     margin-top: 0.6em;
     width: 30%;
+    box-shadow: 4px 4px 10px navy;  
+}
+
+.answer-button {
+    border-radius: 8px;
+    color: black;
+    cursor: pointer;
+    width: 6%;
+    margin-left: 2%;
     box-shadow: 4px 4px 10px navy;  
 }
 
@@ -40,10 +49,11 @@ main {
     justify-content: space-evenly;
 }
 
-.answers {
+.answerList {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 100%;
 }
 
 .card {

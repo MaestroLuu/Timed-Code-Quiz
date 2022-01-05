@@ -6,6 +6,7 @@ var answers = $(".answers");
 var timerEl = $(".timer-count");
 var isWin = false;
 var timerCount;
+var answerList = $(".answerList");
 
 var questionList = [
     {
@@ -22,14 +23,6 @@ var questionList = [
     }
 ];
 
-    // questions.text(JSON.stringify(questionList[1].question));
-    
-    // var answerChoice = $("<li>");
-    // answerChoice.text(JSON.stringify(questions.children[0].children[0]));
-    // answerChoice.append("<button></button>");
-    // answers.append(answerChoice);
-    // answers.text = answerChoice;
-    // });
 
 
 function startGame() {
@@ -38,8 +31,27 @@ function startGame() {
     startBtn.disabled = true;
     questions.text(JSON.stringify(questionList[1].question));
     startTimer();
+    displayAnswer();
 }
   
+function displayAnswer () {
+    var answerChoice1 = $("<li>");
+    answerChoice1.text(questionList[1].answer1);
+    answerChoice1.append("<button class='answer-button'>1</button>");
+    answerList.append(answerChoice1);
+
+    var answerChoice2 = $("<li>");
+    answerChoice2.text(questionList[1].answer2);
+    answerChoice2.append("<button class='answer-button'>2</button>");
+    answerList.append(answerChoice2);
+
+    var answerChoice3 = $("<li>");
+    answerChoice3.text(questionList[1].answer3);
+    answerChoice3.append("<button class='answer-button'>3</button>");
+    answerList.append(answerChoice3);
+
+    
+}
 
 function startTimer() {
     var timer = setInterval(function() {
