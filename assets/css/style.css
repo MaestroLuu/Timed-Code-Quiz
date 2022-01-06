@@ -36,7 +36,7 @@ header {
     cursor: pointer;
     font-size: 1.5rem;
     width: 100%;
-    margin-left: 2%;
+    margin-top: 2%;
 }
 
 li {
@@ -111,3 +111,6 @@ main {
     justify-content: center;
 }
 
+#initialsInput {
+    display: none;
+}

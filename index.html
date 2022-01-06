@@ -18,6 +18,14 @@
         <section>
             <div class="card question-box">
                 <div class="questions">Do you know your code?</div>
+                <form id="initialsInput">
+                    <div id="input-group">
+                      <label for="initials">Initials</label>
+                      <input type="text" name="initials" id="initials" placeholder="First and Last Initials" />
+                    </div>
+                    <button id="submit">Submit</button>
+                  </form>
+    
             </div>
         </section>
         
@@ -25,18 +33,17 @@
             <div class="card results">
                 <div class="scores">
                     <h2>Top Scores</h2>
-                    <ol>
-                        <li></li>
-                    </ol>
+                        <ol></ol>
                 </div>
                 <div class="card timer">
                     <div class="timer-text">
-                        <div class="large-font timer-count">60</div>
+                        <div class="large-font timer-count">100</div>
                         <h3>seconds remaining</h3>
                     </div>
                 </div>
             </div>
         </section>
+        
         <script src="./assets/js/script.js"></script>
     </main>
 </body>
