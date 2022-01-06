@@ -9,7 +9,6 @@ var submitBtn = document.querySelector("#submit");
 var isWin = false;
 var index = 0;
 var timerCount;
-
 var questionList = [
     {
         question: "What basic language does web development utilize?",
@@ -40,13 +39,11 @@ var questionList = [
 ];
 
 function startGame() {
-    // isWin = false;
     timerCount = 100;
     startBtn.disabled = true;
     startTimer();
     displayQuestion();
 }
-
   
 function displayQuestion () {
     questions.innerHTML = "";
@@ -56,12 +53,15 @@ function displayQuestion () {
         return;
     }
     
+    // sets variable to account for changing array index
     var questionCheck = questionList[index];
-
+    
+    // displays first question within array
     var h2 = document.createElement("h2");
     h2.textContent = questionList[index].question;
     questions.append(h2);
 
+    //creates new elements from 
     var optionsList = document.createElement("div");
     optionsList.classList.add("optionsList");
     questions.appendChild(optionsList);
@@ -98,6 +98,7 @@ function startTimer() {
 
 function endGame() {
     questions.innerHTML = "";
+    // reveals hidden display with initials input when game ends
     document.getElementById("initialsInput").style.display = "unset";
 }
 
@@ -106,10 +107,6 @@ function checkConditions(event) {
         index += 1;
         timerCount = timerCount - 10;
     }
-
-    // if (answerBtn !== questionCheck.answer) {
-        // timerCount = timerCount - 10;
-    // }
     
     displayQuestion();
 }  
@@ -117,6 +114,8 @@ function checkConditions(event) {
 startBtn.addEventListener("click", startGame);
 questions.addEventListener("click", checkConditions);
 
+// when submit button is clicked, values will be stored in the local storage and retrieved
+// values from the localStorage are displayed on scores section within web application
 submitBtn.addEventListener("click", function(event) {
     event.preventDefault();
 
@@ -137,3 +136,7 @@ submitBtn.addEventListener("click", function(event) {
     } 
 
 });
+
+// known issues needed to debug:
+// - scores are saved within localStorage, but are not remaining on screen during reboot
+// - when selecting answers, all button selections within the quiz will penalize user irregardless of correctness
