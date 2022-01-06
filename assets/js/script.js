@@ -1,85 +1,91 @@
-
 var secondsLeft = 60;
-var startBtn = $(".start-button");
-var questions = $(".questions");
-var answers = $(".answers");
-var timerEl = $(".timer-count");
+var startBtn = document.querySelector(".start-button");
+var questions = document.querySelector(".questions");
+var answers = document.querySelector(".answers");
+var timerEl = document.querySelector(".timer-count");
+var answerBtn = document.querySelectorAll(".answer-button");
 var isWin = false;
+var index = 0;
 var timerCount;
-var answerList = $(".answerList");
-var answerBtn = $(".answer-button");
 
 var questionList = [
     {
         question: "What basic language does web development utilize?",
-        answer1: "CSS",
-        answer2: "HTML",
-        answer3: "JS"
+        options: ["CSS", "HTML", "JS"],
+        answer: "HTML",
     }, 
     {
         question: "How much coffee do you get in a tall Starbucks?",
-        answer1: "12oz",
-        answer2: "16oz",
-        answer3: "24oz"
-    }
+        options: ["12oz", "16oz", "24oz"],
+        answer: "12oz",
+    },
 ];
-
-
 
 function startGame() {
     // isWin = false;
     timerCount = 60;
     startBtn.disabled = true;
     startTimer();
-    displayAnswer();
+    displayQuestion();
 }
-  
-function displayAnswer () {
-    for (var i = 0; i < 1; i++) {
-        
-        
-        // if user has not made any iput, display [0]
-        // else, i++ and move to next question on array
-        questions.text(questionList[i].question);
-        
-        var answerChoice1 = $("<li>");
-        answerChoice1.text(questionList[i].answer1);
-        answerChoice1.append("<button class='answer-button correct-answer'>1</button>");
-        answerList.append(answerChoice1);
-    
-        var answerChoice2 = $("<li>");
-        answerChoice2.text(questionList[i].answer2);
-        answerChoice2.append("<button class='answer-button'>2</button>");
-        answerList.append(answerChoice2);
-    
-        var answerChoice3 = $("<li>");
-        answerChoice3.text(questionList[i].answer3);
-        answerChoice3.append("<button class='answer-button'>3</button>");
-        answerList.append(answerChoice3);    
-    } 
-    
-    // When the user clicks on the button that correlates with their selected answer
-    // if the class = correct-answer, the display function will move to the next
-    // question in the array w/o penalty. If it is an incorrect-answer, the timer
-    // will lose 10s and the display function will still move to the next question 
 
+function checkConditions(event) {
+    // IF user clicked an answer-btn
+    if (event.target.matches(".answer-button")) {
+        alert(event.target.dataset.answer === "1");
+        index += 1;
+        displayQuestion();
+    }
+}  
+  
+function displayQuestion () {
+    questions.innerHTML = "";
+    
+    if (index >= questionList.length) {
+        alert("Game over!");
+        return;
+    }
+    
+    var questionCheck = questionList[index];
+
+    var h2 = document.createElement("h2");
+    h2.textContent = questionList[index].question;
+    questions.append(h2);
+
+    var optionsList = document.createElement("div");
+    optionsList.classList.add("optionsList");
+    questions.appendChild(optionsList);
+
+    for (var i = 0; i < questionCheck.options.length; i++) {    
+        var optionText = questionCheck.options[i];
+        var btn = document.createElement("button");
+        btn.classList.add("answer-button");
+        btn.textContent = optionText;
+
+        if (optionText === questionCheck.answer) {
+            btn.dataset.answer = 1;
+        }   else {
+            btn.dataset.answers = 0;
+        }
+        optionsList.appendChild(btn);
+    }
 }
 
 function startTimer() {
     var timer = setInterval(function() {
-      timerEl.text(timerCount);
-      timerCount--;
-    //   if (timerCount >= 0) {
-    //     if (isWin && timerCount > 0) {
-    //        clearInterval(timer);
-    //       winGame();
-    //     // }
-    //   }
+        timerCount--;
+        timerEl.textContent = timerCount;
+      if (timerCount >= 0) {
+        if (isWin && timerCount > 0) {
+           clearInterval(timer);
+        //   winGame();
+        }
+      }
       
-    //   if (timerCount <= 0) {
-    //     clearInterval(timer);
-    //     // loseGame();
-    //   }
+      if (timerCount <= 0) {
+        clearInterval(timer);
+        // loseGame();
+      }
     }, 1000);
 } 
 
@@ -87,23 +93,11 @@ function endGame() {
     prompt("What are your first and last initials?");
 }
 
-startBtn.on("click", startGame);
-answerList.on("click", function(event) {
-    console.log(event.target);
-    // if (click === (!$('answerBtn').hasClass('correct-answer')
-});
 
+startBtn.addEventListener("click", startGame);
+btn.addEventListener("click", checkConditions);
+answerBtn.addEventListener("click", checkConditions);
 
 // localStorage.setItem("initials", scores);
 
-// check answer function
 // input function for local storage
-// remove question&answers and replace with new questions function
-
-// answers.on("click", checkAnswer);
-// 
-// function checkAnswer(event) {
-//     var btnClick = $(event.target);
-
-// }
-// 

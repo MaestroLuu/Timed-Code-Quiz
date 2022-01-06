@@ -34,13 +34,18 @@ header {
     border-radius: 8px;
     color: black;
     cursor: pointer;
-    width: 22%;
+    font-size: 1.5rem;
+    width: 100%;
     margin-left: 2%;
-    box-shadow: 4px 4px 10px navy;  
 }
 
 li {
     font-size: 2em;
+}
+
+h2 {
+    font-weight: normal;
+    font-size: 1em;
 }
 
 main {
@@ -66,6 +71,12 @@ main {
 .large-font {
     font-size: 3.5em;
     text-align:center;
+}
+
+.optionsList {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .question-box {
